@@ -1,0 +1,620 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+     font-family: "Inter", sans-serif;
+}
+.sidebar{
+    overflow: hidden;
+}
+
+/* Dark theme base */
+html, body, #root {
+    height: 100%;
+}
+body {
+    background: radial-gradient(1200px 600px at 10% 10%, #0b0b0b 0%, #000000 40%);
+    color: #e6e6e6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Use the profile photo as a subtle blurred background layer */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url('/Gemini_Generated_Image_cqgqlpcqgqlpcqgq.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    /* slightly lighter than before to increase background visibility */
+        filter: blur(12px) brightness(0.32);
+    transform: scale(1.02);
+}
+
+/* when pointer is over the page, reduce background blur and brighten slightly */
+.pointer-focused body::before {
+    /* noop; this selector won't match since body is root; define below */
+}
+
+/* apply pointer-focused by targeting html.p as well (we toggle body.class) */
+body.pointer-focused::before {
+    filter: blur(8px) brightness(0.42);
+    transform: scale(1.01);
+}
+
+/* subtle global fluctuation animation (2-3s) */
+.fluctuate {
+    animation: fluct 2.5s ease-in-out infinite;
+}
+
+@keyframes fluct {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(1.06); }
+    100% { filter: brightness(1); }
+}
+
+/* hero/profile image styling and gentle float */
+.hero-img {
+    border-radius: 50%;
+    width: 260px;
+    height: 260px;
+    object-fit: cover;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6), 0 0 0 4px rgba(255,255,255,0.02) inset;
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+/* Buttons and links high contrast */
+.btn-primary {
+    background-color: #1f6feb;
+    border-color: #1f6feb;
+}
+.btn-outline-secondary {
+    color: #e6e6e6;
+    border-color: rgba(255,255,255,0.12);
+}
+
+/* Ensure container background is transparent so dark background shows */
+.container, main.container {
+    background: transparent;
+}
+
+/* Typography adjustments for a modern portfolio */
+h1, .display-5, .display-4 {
+    color: #ffffff;
+    letter-spacing: -0.02em;
+}
+
+.lead {
+    font-size: 1.15rem;
+    color: #d9d9d9;
+}
+
+/* Make section spacing a bit tighter for desktop */
+section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+/* Navbar tweaks for dark theme */
+.navbar-dark .navbar-brand {
+    color: #fff;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(230,230,230,0.95);
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #fff;
+}
+
+/* small responsiveness tweaks */
+@media (max-width: 576px) {
+    .hero-img {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+/* Hero title and description sizing */
+.hero-title {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    /* increase gap between words in the animated title */
+    word-spacing: 0.6rem;
+}
+.hero-subtitle {
+    font-size: 1rem;
+    color: #cfcfcf;
+    margin-bottom: 0.45rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.progressive { display: inline-block; }
+
+.hero-desc {
+    font-size: clamp(1rem, 2.4vw, 1.3rem);
+    color: #d7d7d7;
+    line-height: 1.6;
+}
+
+/* nudge image up and text slightly down for a pleasing offset */
+.hero-image-wrap { display:flex; justify-content:center; align-items:flex-start; }
+.hero-image-wrap .hero-img { transform: translateY(-12px); }
+.hero-text-wrap { display:flex; flex-direction:column; justify-content:center; padding-top: 12px; }
+
+/* increase gap between photo and description */
+.hero-row { gap: 4.5rem; }
+
+/* Force side-by-side layout for hero: image left, description right */
+.hero-row {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+}
+
+.hero-image-wrap {
+    flex: 0 0 40%;
+    max-width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-text-wrap {
+    flex: 1 1 60%;
+    max-width: 60%;
+    padding-left: 1.25rem;
+}
+
+/* larger hero image for medium+ screens */
+.hero-img {
+    border-radius: 50%;
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.6), 0 0 0 4px rgba(255,255,255,0.02) inset;
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* vertical divider between image and description */
+.hero-image-wrap { position: relative; }
+.hero-image-wrap::after {
+  content: '';
+  position: absolute;
+  right: -18px;
+  top: 12%;
+  height: 76%;
+  width: 1px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 1px;
+}
+
+/* character-by-character heading animation */
+.hero-title .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(8px);
+}
+.hero-desc { opacity: 0; transform: translateY(6px); transition: opacity 420ms ease, transform 420ms ease; font-size: clamp(1.02rem, 2.4vw, 1.3rem); line-height:1.6 }
+.hero-desc.reveal { opacity: 1; transform: translateY(0); }
+
+/* Social icons shown below the hero, centered between image and text */
+.hero-socials {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-top: 0.75rem;
+}
+.hero-socials .social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+    color: #d9d9d9;
+}
+.hero-socials .social-link:hover {
+    transform: translateY(-6px);
+    color: #ffffff;
+}
+
+/* Scattered photo pieces for About section */
+.about-photo-scatter {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    aspect-ratio: 1/1;
+    will-change: transform, opacity;
+    border-radius: 50%;
+    overflow: hidden;
+    /* apply a soft circular shadow */
+    box-shadow: 0 14px 36px rgba(0,0,0,0.55);
+}
+.scatter-piece {
+    position: absolute;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+    border-radius: 0;
+    backface-visibility: hidden;
+    contain: paint;
+    transition: transform 520ms cubic-bezier(.22,.9,.28,1), opacity 440ms ease;
+}
+
+/* ensure final assembled state is settled */
+.reveal-on-scroll.show .about-photo-scatter .scatter-piece {
+    transform: translate(0px, 0px) rotate(0deg) scale(1) !important;
+    opacity: 1 !important;
+}
+
+@media (max-width: 767.98px) {
+    .about-photo-scatter { max-width: 320px; }
+}
+
+@keyframes char-in {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 767.98px) {
+        /* keep side-by-side on small screens but scale down sizes */
+        .hero-image-wrap { flex: 0 0 36%; max-width:36%; }
+        .hero-text-wrap { flex: 1 1 64%; max-width:64%; padding-left: 0.8rem; }
+        .hero-img { max-width: 160px; }
+        .hero-row { gap: 1rem; }
+        .hero-desc { font-size: 1rem; }
+    .hero-title { word-spacing: 0.25rem; }
+}
+
+/* If viewport becomes extremely narrow, allow stacking to avoid overflow */
+@media (max-width: 420px) {
+    .hero-row { flex-wrap: wrap; }
+    .hero-image-wrap, .hero-text-wrap { max-width: 100%; flex: 0 0 100%; }
+    .hero-image-wrap::after { display: none; }
+    .hero-text-wrap { padding-left: 0; margin-top: 0.75rem; }
+    .hero-title { word-spacing: 0.18rem; }
+}
+
+/* Custom navbar glass style */
+.navbar-custom{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    padding: 0.9rem 1.25rem;
+}
+.navbar-custom .navbar-brand{ color: #fff; }
+.navbar-custom .nav-link{ color: rgba(230,230,230,0.95); }
+.navbar-custom .nav-link.active, .navbar-custom .nav-link:hover{ color: #fff; }
+
+.navbar-custom .btn-outline-light{ border-color: rgba(255,255,255,0.12); color: #e6e6e6; }
+
+/* Ghost button (transparent, matches background) */
+.btn-ghost {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.06);
+    color: #e6e6e6;
+}
+.btn-ghost:hover {
+    background: rgba(255,255,255,0.02);
+    color: #fff;
+}
+
+/* Projects featured card tweaks */
+.project-card-image {
+    height: 200px;
+    object-fit: cover;
+}
+.project-badge {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    background: rgba(31,111,235,0.12);
+    color: #dce9ff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+}
+
+.projects-footer {
+    display:flex;
+    justify-content:center;
+    margin-top:1rem;
+}
+
+/* Reveal animation for project items */
+.project-reveal { opacity: 0; }
+.project-reveal.left { transform: translateX(-28px); }
+.project-reveal.right { transform: translateX(28px); }
+.project-reveal.show { opacity: 1; transform: translateX(0) translateY(0); }
+.project-reveal.hide-up { opacity: 0; transform: translateY(-20px) scale(0.98); }
+
+/* Generic reveal-on-scroll rules used by multiple sections */
+.reveal-on-scroll { opacity: 0; transform: translateY(18px); }
+.reveal-on-scroll.show { opacity: 1; transform: translateY(0); }
+
+/* reveal-from-left: slide in from left when .show toggles */
+.reveal-from-left { opacity: 0; transform: translateX(-36px); }
+.reveal-from-left.show { opacity: 1; transform: translateX(0); transition: transform 420ms cubic-bezier(.22,.9,.28,1), opacity 420ms ease; }
+
+/* reveal-from-right */
+.reveal-from-right { opacity: 0; transform: translateX(36px); }
+.reveal-from-right.show { opacity: 1; transform: translateX(0); transition: transform 420ms cubic-bezier(.22,.9,.28,1), opacity 420ms ease; }
+
+/* reveal-from-bottom */
+.reveal-from-bottom { opacity: 0; transform: translateY(26px); }
+.reveal-from-bottom.show { opacity: 1; transform: translateY(0); transition: transform 420ms cubic-bezier(.22,.9,.28,1), opacity 420ms ease; }
+
+/* scale-in reveal for badges / small items */
+.reveal-scale { opacity: 0; transform: scale(0.96); }
+.reveal-scale.show { opacity: 1; transform: scale(1); transition: transform 380ms cubic-bezier(.22,.9,.28,1), opacity 320ms ease; }
+
+/* staggered reveal: children should use transitionDelay inline or nth-child */
+.reveal-stagger .project-card { opacity: 0; transform: translateY(18px) scale(.992); }
+.reveal-stagger.show .project-card { opacity: 1; transform: translateY(0) scale(1); transition: transform 420ms cubic-bezier(.22,.9,.28,1), opacity 420ms ease; }
+
+/* timeline item default hidden state (used for Experience/Education items) */
+.timeline-item { opacity: 0; transform: translateX(-18px) scale(.996); transition: transform 420ms cubic-bezier(.22,.9,.28,1), opacity 420ms ease; }
+.reveal-on-scroll.show .timeline-item { opacity: 1; transform: translateX(0) scale(1); }
+
+/* skill badges scale-in stagger */
+.skill-badge { opacity: 0; transform: scale(.85); transition: transform 360ms cubic-bezier(.22,.9,.28,1), opacity 320ms ease; }
+.reveal-on-scroll.show .skill-badge { opacity: 1; transform: scale(1); }
+
+/* ProgressiveTitle styling */
+.progressive-title { font-weight: 700; color: #fff; letter-spacing: 0.02em; }
+
+/* Footer links animate left->right with stagger */
+.footer-links li a { opacity: 0; transform: translateX(-36px); transition: transform 420ms cubic-bezier(.22,.9,.28,1), opacity 420ms ease; }
+.reveal-on-scroll.show .footer-links li:nth-child(1) a { transition-delay: 80ms; opacity: 1; transform: translateX(0); }
+.reveal-on-scroll.show .footer-links li:nth-child(2) a { transition-delay: 160ms; opacity: 1; transform: translateX(0); }
+.reveal-on-scroll.show .footer-links li:nth-child(3) a { transition-delay: 240ms; opacity: 1; transform: translateX(0); }
+.reveal-on-scroll.show .footer-links li:nth-child(4) a { transition-delay: 320ms; opacity: 1; transform: translateX(0); }
+
+/* footer copyright slide-in */
+.footer-copy { opacity: 0; transform: translateX(-28px); transition: transform 420ms cubic-bezier(.22,.9,.28,1), opacity 420ms ease; }
+.reveal-on-scroll.show .footer-copy { opacity: 1; transform: translateX(0); }
+
+/* contact form panel reveal */
+.panel-reveal { opacity: 0; transform: translateX(20px); transition: transform 420ms cubic-bezier(.22,.9,.28,1), opacity 420ms ease; }
+.reveal-on-scroll.show .panel-reveal { opacity: 1; transform: translateX(0); }
+
+/* Fix blurred-looking footer copy and ensure crisp text */
+.footer-copy, .footer-copy span, .footer-links li a, .footer-links li a .footer-icon {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    filter: none !important;
+    color: #e6e6e6 !important;
+    text-shadow: none !important;
+}
+
+/* Wiggle animation (short) used when elements reveal */
+@keyframes wiggle-subtle {
+    0% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-4px) rotate(-1.8deg); }
+    50% { transform: translateX(4px) rotate(1.8deg); }
+    75% { transform: translateX(-2px) rotate(-0.9deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes wiggle-strong {
+    0% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-10px) rotate(-5deg); }
+    50% { transform: translateX(10px) rotate(5deg); }
+    75% { transform: translateX(-5px) rotate(-2.5deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+}
+
+/* Apply a short wiggle to footer links on reveal with stagger (defaults to subtle). */
+.reveal-on-scroll.show .footer-links.wiggle-subtle li:nth-child(1) a { animation: wiggle-subtle 820ms cubic-bezier(.22,.9,.28,1) both; animation-delay: 60ms; }
+.reveal-on-scroll.show .footer-links.wiggle-subtle li:nth-child(2) a { animation: wiggle-subtle 880ms cubic-bezier(.22,.9,.28,1) both; animation-delay: 140ms; }
+.reveal-on-scroll.show .footer-links.wiggle-subtle li:nth-child(3) a { animation: wiggle-subtle 940ms cubic-bezier(.22,.9,.28,1) both; animation-delay: 200ms; }
+.reveal-on-scroll.show .footer-links.wiggle-subtle li:nth-child(4) a { animation: wiggle-subtle 1000ms cubic-bezier(.22,.9,.28,1) both; animation-delay: 260ms; }
+
+.reveal-on-scroll.show .footer-links.wiggle-strong li:nth-child(1) a { animation: wiggle-strong 820ms cubic-bezier(.22,.9,.28,1) both; animation-delay: 60ms; }
+.reveal-on-scroll.show .footer-links.wiggle-strong li:nth-child(2) a { animation: wiggle-strong 880ms cubic-bezier(.22,.9,.28,1) both; animation-delay: 140ms; }
+.reveal-on-scroll.show .footer-links.wiggle-strong li:nth-child(3) a { animation: wiggle-strong 940ms cubic-bezier(.22,.9,.28,1) both; animation-delay: 200ms; }
+.reveal-on-scroll.show .footer-links.wiggle-strong li:nth-child(4) a { animation: wiggle-strong 1000ms cubic-bezier(.22,.9,.28,1) both; animation-delay: 260ms; }
+
+/* Wiggle the contact panel slightly when it appears (defaults to subtle) */
+.reveal-on-scroll.show .panel-reveal.wiggle-subtle { animation: wiggle-subtle 780ms cubic-bezier(.22,.9,.28,1) both; }
+.reveal-on-scroll.show .panel-reveal.wiggle-strong { animation: wiggle-strong 780ms cubic-bezier(.22,.9,.28,1) both; }
+
+/* ensure hero title characters still animate when section reveal triggers */
+.reveal-on-scroll .hero-title .char { opacity: 0; transform: translateY(8px); }
+.reveal-on-scroll.show .hero-title .char { animation: char-in 420ms cubic-bezier(.22,.9,.28,1) forwards; }
+
+/* scroll padding so anchors are not hidden under fixed navbar */
+html { scroll-padding-top: 88px; }
+
+/* Navbar spacing improvements */
+.navbar-nav .nav-link {
+    padding: 0.6rem 0.9rem;
+    margin-left: 0.45rem;
+}
+
+/* Dark form controls inside panel-dark */
+.panel-dark .form-control,
+.panel-dark .form-control:focus,
+.panel-dark textarea.form-control {
+    background-color: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    color: #e6e6e6;
+}
+.panel-dark .form-floating > label {
+    color: #bfbfbf;
+}
+.panel-dark .form-control::placeholder {
+    color: rgba(255,255,255,0.35);
+}
+
+/* Make buttons consistent on panels */
+.panel-dark .btn-primary {
+    background-color: #2266ff;
+    border-color: #2266ff;
+}
+
+/* Validation styles inside dark panels */
+.panel-dark .form-control.is-invalid {
+    border-color: rgba(255,90,90,0.9);
+    box-shadow: 0 0 0 0.15rem rgba(255,90,90,0.12);
+}
+.panel-dark .invalid-feedback {
+    color: #ffb3b3;
+}
+
+/* Responsive tweak: ensure form doesn't feel cramped on small screens */
+@media (max-width: 767.98px) {
+  .panel-dark.p-4 { padding: 1rem; }
+}
+
+/* Cards and projects in dark mode */
+.card {
+    background-color: #0f0f11;
+    border: 1px solid rgba(255,255,255,0.04);
+}
+.card .card-body {
+    color: #dcdcdc;
+}
+.card .card-text {
+    color: #cfcfcf;
+}
+.badge.text-bg-secondary {
+    background-color: rgba(255,255,255,0.06);
+    color: #e6e6e6;
+}
+
+/* links/buttons inside dark cards */
+.card .btn-outline-secondary {
+    color: #e6e6e6;
+    border-color: rgba(255,255,255,0.06);
+}
+
+/* form and utility overrides for dark mode */
+.bg-body-tertiary {
+    background-color: rgba(255,255,255,0.02) !important;
+    color: #e6e6e6;
+}
+.panel-dark {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.04);
+    backdrop-filter: blur(6px);
+}
+.text-body-emphasis {
+    color: #ffffff !important;
+}
+.text-body-secondary {
+    color: #bfbfbf !important;
+}
+.fs-4 {
+    font-size: 1.25rem !important;
+}
+
+/* Resume timeline and cards */
+.timeline {
+    display: flex;
+    flex-direction: column;
+}
+.timeline-item {
+    position: relative;
+    padding-left: 1rem;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 12px;
+    width: 10px;
+    height: 10px;
+    background: #1f6feb;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(31,111,235,0.06);
+}
+
+/* Resume header (back + download) */
+.resume-header .btn-ghost {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.04);
+    color: #e6e6e6;
+}
+.resume-header .btn-primary {
+    background-color: #2266ff;
+    border-color: #2266ff;
+}
+
+/* Bright Download CV button */
+.btn-download {
+    background: linear-gradient(90deg, #40a9ff 0%, #1f6feb 100%);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 24px rgba(31,111,235,0.28);
+    transition: transform 180ms ease, box-shadow 180ms ease, filter 160ms ease;
+}
+.btn-download:hover, .btn-download:focus {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(31,111,235,0.36);
+    filter: brightness(1.05);
+}
+.btn-download:active {
+    transform: translateY(-1px) scale(0.995);
+}
+
+.card.panel-dark { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); }
+
+/* small adjustments for resume sidebar */
+aside .panel-dark img.hero-img { margin: 0 auto 12px; }
+
+/* ensure space characters in per-char headings render as visible gaps */
+.char.space {
+    display: inline-block;
+    width: 0.45rem;
+}
+
+/* Blue-accent toggle visuals */
+.blue-light-btn{
+    width:26px;
+    height:14px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,0.12);
+    background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
+    cursor:pointer;
+    position:relative;
+    outline:none;
+}
+.blue-light-btn::after{
+    content:'';
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#cbd5e1;
+    transition:all .18s cubic-bezier(.4,0,.2,1);
+}
+.blue-light-btn.active{background:linear-gradient(90deg,#0ea5e9,#2563eb)}
+.blue-light-btn.active::after{transform:translateX(12px);background:white}
+
+/* Body accent class toggled by navbar control */
+.blue-accent{--accent: #0ea5e9}
+.blue-accent a, .blue-accent .btn-ghost{color:var(--accent) !important}
+.blue-accent .navbar-custom{box-shadow:0 6px 18px rgba(14,165,233,0.06)}

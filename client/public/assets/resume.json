@@ -1,0 +1,70 @@
+{
+  "name": "Abenezer Teketel Estifanos",
+  "location": "Addis Ababa, Ethiopia",
+  "phone": [
+    "+251 902 913 860",
+    "+251 955 295 719"
+  ],
+  "email": "abenezerteketel7@gmail.com",
+  "links": {
+    "github": "https://github.com/Abfoll",
+    "linkedin": ""
+  },
+  "title": "Fullstack Developer (MERN)",
+  "summary": "Fullstack Developer (MERN) passionate about designing and developing scalable web applications using React, Node.js, and PostgreSQL. Experienced in building ERP and Inventory Management Systems with a strong focus on clean architecture, RESTful security, and smooth user interfaces. Enthusiastic about continuous learning, collaboration, and contributing to impactful software projects.",
+  "experience": [
+    {
+      "role": "Fullstack Developer (MERN)",
+      "company": "SkillBridge Institute of Technology",
+      "period": "April 2024 - Present",
+      "details": [
+        "Built a scalable inventory management system.",
+        "Developed secure REST APIs using Express.js and PostgreSQL.",
+        "Implemented server-rendered frontends with React for performance enhancement.",
+        "Designed reusable UI components and optimized backend architecture."
+      ]
+    },
+    {
+      "role": "Backend Developer Trainee",
+      "company": "Google Developer Student Club (GDSC)",
+      "period": "2024 - 2025",
+      "details": [
+        "Contributed to the Visit Addis backend.",
+        "Designed and managed APIs, routes, and database structures.",
+        "Collaborated in open-source learning and hackathon projects."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Science in Electrical & Computer Engineering (Communication Specialization)",
+      "institution": "Addis Ababa Science and Technology University (AASTU)",
+      "period": "April 2022 – Present",
+      "details": "Coursework: Java, C++, Data Structures & Algorithms, Database Scalability & Design"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Visit Addis — City Exploration App",
+      "description": "Backend system built with Node.js and Express.js for managing tourism and destination data. Frontend: React Query, TanStack, React Hook Form, Shadcn UI, Tailwind CSS. Database: PostgreSQL."
+    },
+    {
+      "title": "Teachers Evaluation System — Java Desktop App",
+      "description": "Developed a performance evaluation system with database integration for faculty review."
+    }
+  ],
+  "skills": [
+    "JavaScript",
+    "Python",
+    "Java",
+    "React",
+    "Node.js",
+    "Express.js",
+    "SvelteKit",
+    "PostgreSQL",
+    "Git",
+    "GitHub",
+    "VS Code",
+    "Postman"
+  ]
+}
