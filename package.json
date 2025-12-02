@@ -1,0 +1,14 @@
+{
+  "name": "my-portfolio-root",
+  "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "node": "18.x"
+  },
+  "scripts": {
+    "postinstall": "cd client && npm install && cd ../server && npm install",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start",
+    "heroku-postbuild": "npm run build"
+  }
+}
