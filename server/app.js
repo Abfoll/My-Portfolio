@@ -10,8 +10,19 @@ const createApp = () => {
   const app = express();
 
   // Middleware
-  const corsOrigin = process.env.CORS_ORIGIN || '*';
-  app.use(cors({ origin: corsOrigin }));
+  // Allow single or comma-separated origins (e.g., "https://foo.com,https://bar.com")
+  const corsOriginEnv = process.env.CORS_ORIGIN || '*';
+  const allowedOrigins = corsOriginEnv.split(',').map(o => o.trim()).filter(Boolean);
+  app.use(cors({
+    origin: (origin, cb) => {
+      if (!origin) return cb(null, true); // allow non-browser or same-origin
+      if (allowedOrigins.includes('*')) return cb(null, true);
+      return allowedOrigins.includes(origin)
+        ? cb(null, true)
+        : cb(new Error('CORS blocked: origin not allowed'));
+    },
+    credentials: true
+  }));
   app.use(express.json());
 
   // Routes
