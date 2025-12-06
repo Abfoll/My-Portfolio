@@ -6,9 +6,9 @@
     "node": ">=18"
   },
   "scripts": {
-    "postinstall": "cd client && npm install && cd ../server && npm install",
+    "postinstall": "cd client && npm ci --include=dev && cd ../server && npm ci",
     "build": "cd client && npm ci --include=dev && npm run build",
-    "start": "cd server && npm start",
+    "start": "cd server && npm ci --production && npm start",
     "heroku-postbuild": "npm run build"
   }
 }
