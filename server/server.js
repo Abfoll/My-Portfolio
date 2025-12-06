@@ -3,8 +3,11 @@
 
 const serverless = require('serverless-http');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-dotenv.config();
+try {
+  require('dotenv').config();
+} catch (e) {
+  // dotenv optional — production hosts provide env vars
+}
 
 // Import the refactored app utilities from repository root `server.js`
 const { createApp, ensureAdminUser } = require('../server');

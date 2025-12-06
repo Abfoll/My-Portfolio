@@ -4,8 +4,11 @@
 
 const serverless = require('serverless-http');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-dotenv.config();
+try {
+  require('dotenv').config();
+} catch (e) {
+  // dotenv optional — production hosts provide env vars
+}
 
 const { createApp, ensureAdminUser } = require('../server/server');
 

@@ -1,4 +1,8 @@
-require('dotenv').config();
+try {
+  require('dotenv').config();
+} catch (e) {
+  // dotenv is optional in production hosts that provide env vars
+}
 const mongoose = require('mongoose');
 const { createApp, ensureAdminUser } = require('./server');
 
