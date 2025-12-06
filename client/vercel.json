@@ -1,6 +1,7 @@
 {
   "version": 2,
-  "routes": [
-    { "src": "/(.*)", "dest": "/index.html" }
+  "rewrites": [
+    { "source": "/assets/:match*", "destination": "/assets/:match*" },
+    { "source": "/:path*", "destination": "/index.html" }
   ]
 }
