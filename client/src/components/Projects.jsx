@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-
 import axios from "axios";
+import { api } from "../api";
 const Projects = () => {
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(true)
@@ -15,7 +15,7 @@ const Projects = () => {
         // fetch backend projects (may be empty)
         let backendProjects = [];
         try {
-          const res = await axios.get("http://localhost:5000/api/projects");
+          const res = await api.get("/api/projects");
           if (Array.isArray(res.data) && res.data.length > 0) backendProjects = res.data;
         } catch (e) {
           // ignore backend errors and continue with GitHub
@@ -204,7 +204,7 @@ const Projects = () => {
                           onClick={async () => {
                             if (!confirm('Delete this project?')) return;
                             try {
-                              await axios.delete(`http://localhost:5000/api/projects/${project._id}`);
+                              await api.delete(`/api/projects/${project._id}`);
                               setProjects(prev => prev.filter(p => p._id !== project._id));
                             } catch (err) {
                               console.error('Failed to delete project', err);

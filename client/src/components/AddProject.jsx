@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import { api } from "../api";
 
 const AddProject = () => {
   const [formData, setFormData] = useState({
@@ -52,7 +52,7 @@ const AddProject = () => {
     };
 
     try {
-      await axios.post("http://localhost:5000/api/projects", payload, {
+      await api.post("/api/projects", payload, {
         headers: {
           Authorization: `Bearer ${token}`
         }

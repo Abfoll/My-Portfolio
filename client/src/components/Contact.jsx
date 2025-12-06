@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ProgressiveTitle from './ProgressiveTitle'
-import axios from "axios";
+import { api } from "../api";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ const Contact = () => {
   setLoading(true);
 
   try {
-    const response = await axios.post('http://localhost:5000/api/contact', formData);
+    const response = await api.post('/api/contact', formData);
 
     if (response.status === 201) {
       setStatus('Message sent successfully!');

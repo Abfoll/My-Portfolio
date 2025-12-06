@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { api } from "../api";
 import { useNavigate } from "react-router-dom";
 
 const AdminProjects = () => {
@@ -14,7 +14,7 @@ const AdminProjects = () => {
   const fetchProjects = async () => {
     const token = localStorage.getItem("token");
     try {
-      const res = await axios.get("http://localhost:5000/api/projects", {
+      const res = await api.get("/api/projects", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProjects(res.data);
@@ -31,7 +31,7 @@ const AdminProjects = () => {
 
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`http://localhost:5000/api/projects/${id}`, {
+      await api.delete(`/api/projects/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProjects(projects.filter((project) => project._id !== id));

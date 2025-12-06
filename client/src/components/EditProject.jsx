@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { api } from "../api";
 
 const EditProject = () => {
   const { id } = useParams();
@@ -20,7 +20,7 @@ const EditProject = () => {
     const fetchProject = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await axios.get(`http://localhost:5000/api/projects/${id}`, {
+        const res = await api.get(`/api/projects/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const project = res.data;
@@ -56,7 +56,7 @@ const EditProject = () => {
     };
 
     try {
-      await axios.put(`http://localhost:5000/api/projects/${id}`, updatedData, {
+      await api.put(`/api/projects/${id}`, updatedData, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

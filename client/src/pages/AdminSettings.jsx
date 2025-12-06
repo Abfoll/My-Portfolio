@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { api } from '../api';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -32,7 +32,7 @@ const AdminSettings = () => {
         return;
       }
 
-      const res = await axios.put('http://localhost:5000/api/auth/me', payload);
+      const res = await api.put('/api/auth/me', payload);
       setStatus('Saved');
       // if email changed, force logout to refresh token/email
       if (payload.email) {
