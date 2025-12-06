@@ -4,7 +4,7 @@ try {
   // dotenv is optional in production hosts that provide env vars
 }
 const mongoose = require('mongoose');
-const { createApp, ensureAdminUser } = require('./server');
+const { createApp, ensureAdminUser } = require('./app');
 
 // Connect to MongoDB and start the Express server (traditional runtime)
 let mongoUri = process.env.MONGODB_URI;

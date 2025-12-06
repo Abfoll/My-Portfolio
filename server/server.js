@@ -9,8 +9,8 @@ try {
   // dotenv optional — production hosts provide env vars
 }
 
-// Import the refactored app utilities from repository root `server.js`
-const { createApp, ensureAdminUser } = require('../server');
+// Import the refactored app utilities from `server/app.js`
+const { createApp, ensureAdminUser } = require('./app');
 
 function sanitizeMongoUri(uri) {
   let sanitized = uri.trim();

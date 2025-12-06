@@ -10,7 +10,7 @@ try {
   // dotenv optional — production hosts provide env vars
 }
 
-const { createApp, ensureAdminUser } = require('../server/server');
+const { createApp, ensureAdminUser } = require('../server/app');
 
 if (!process.env.MONGODB_URI) {
   console.error('MONGODB_URI not set in environment for serverless function.');
