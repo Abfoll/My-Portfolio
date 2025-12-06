@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: my-portfolio-web
+    env: node
+    branch: main
+    root: .
+    plan: free
+    buildCommand: "npm run build"
+    startCommand: "npm start"
