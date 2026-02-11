@@ -104,6 +104,11 @@ section {
     padding-bottom: 3rem;
 }
 
+/* reduce gap after hero before About */
+.hero-section {
+    margin-bottom: 2rem;
+}
+
 /* Navbar tweaks for dark theme */
 .navbar-dark .navbar-brand {
     color: #fff;
@@ -308,7 +313,8 @@ section {
     .hero-socials .social-link:nth-child(7) { animation-delay: 420ms; }
     .hero-socials .social-link:nth-child(8) { animation-delay: 480ms; }
 
-    .hero-section { margin-bottom: 1rem !important; }
+    .hero-section { margin-bottom: 0.5rem !important; }
+    #about { padding-top: 1.25rem; }
 
     /* projects slider on small screens */
     #projects-list {
