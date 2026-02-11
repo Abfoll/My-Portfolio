@@ -1,12 +1,21 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useAuth } from "../context/AuthContext"
 import { Link } from "react-router-dom"
 
 const Navbar = () => {
   const { user } = useAuth()
+  const collapseRef = useRef(null)
+  const togglerRef = useRef(null)
   const [blueOn, setBlueOn] = useState(() => {
     try { return localStorage.getItem('blueAccent') === '1' } catch { return false }
   })
+
+  const closeMobileMenu = () => {
+    const collapseEl = collapseRef.current
+    if (!collapseEl) return
+    collapseEl.classList.remove('show')
+    if (togglerRef.current) togglerRef.current.setAttribute('aria-expanded', 'false')
+  }
 
   useEffect(() => {
     try {
@@ -24,6 +33,7 @@ const Navbar = () => {
         </Link>
 
         <button
+          ref={togglerRef}
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
@@ -35,22 +45,26 @@ const Navbar = () => {
           <span className="navbar-toggler-icon" />
         </button>
 
-        <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        <div
+          ref={collapseRef}
+          className="collapse navbar-collapse justify-content-center"
+          id="navbarSupportedContent"
+        >
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">Home</a>
+              <a className="nav-link active" aria-current="page" href="#" onClick={closeMobileMenu}>Home</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#about">About</a>
+              <a className="nav-link" href="#about" onClick={closeMobileMenu}>About</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#projects">Projects</a>
+              <a className="nav-link" href="#projects" onClick={closeMobileMenu}>Projects</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#contact">Contact</a>
+              <a className="nav-link" href="#contact" onClick={closeMobileMenu}>Contact</a>
             </li>
             <li className="nav-item d-lg-none">
-              <Link className="nav-link" to="/resume">Resume</Link>
+              <Link className="nav-link" to="/resume" onClick={closeMobileMenu}>Resume</Link>
             </li>
           </ul>
         </div>
