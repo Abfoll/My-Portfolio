@@ -5,5 +5,8 @@ services:
     branch: main
     root: .
     plan: free
+    envVars:
+      - key: CORS_ORIGIN
+        value: "https://my-portfolio-vgv9.vercel.app"
     buildCommand: "npm run build"
     startCommand: "npm start"

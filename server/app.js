@@ -11,11 +11,12 @@ const createApp = () => {
 
   // Middleware
   // Allow single or comma-separated origins (e.g., "https://foo.com,https://bar.com")
-  const corsOriginEnv = process.env.CORS_ORIGIN || '*';
+  const corsOriginEnv = (process.env.CORS_ORIGIN || '*').trim();
   const allowedOrigins = corsOriginEnv.split(',').map(o => o.trim()).filter(Boolean);
   app.use(cors({
     origin: (origin, cb) => {
       if (!origin) return cb(null, true); // allow non-browser or same-origin
+      if (allowedOrigins.length === 0) return cb(null, true);
       if (allowedOrigins.includes('*')) return cb(null, true);
       return allowedOrigins.includes(origin)
         ? cb(null, true)
