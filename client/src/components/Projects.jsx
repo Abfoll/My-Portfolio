@@ -196,25 +196,7 @@ const Projects = () => {
                     Code
                   </a>
                     {
-                      // show delete for backend projects (ObjectId pattern)
-                      /^[0-9a-fA-F]{24}$/.test(String(project._id)) && (
-                        <button
-                          type="button"
-                          className="btn btn-sm btn-outline-danger"
-                          onClick={async () => {
-                            if (!confirm('Delete this project?')) return;
-                            try {
-                              await api.delete(`/api/projects/${project._id}`);
-                              setProjects(prev => prev.filter(p => p._id !== project._id));
-                            } catch (err) {
-                              console.error('Failed to delete project', err);
-                              alert('Failed to delete project');
-                            }
-                          }}
-                        >
-                          Delete
-                        </button>
-                      )
+                      // delete is handled in admin pages only
                     }
                 </div>
                
