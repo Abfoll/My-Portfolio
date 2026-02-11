@@ -116,12 +116,6 @@ section {
 }
 
 /* small responsiveness tweaks */
-@media (max-width: 576px) {
-    .hero-img {
-        width: 140px;
-        height: 140px;
-    }
-}
 
 /* Hero title and description sizing */
 .hero-title {
@@ -272,23 +266,43 @@ section {
     to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 767.98px) {
-        /* keep side-by-side on small screens but scale down sizes */
-        .hero-image-wrap { flex: 0 0 36%; max-width:36%; }
-        .hero-text-wrap { flex: 1 1 64%; max-width:64%; padding-left: 0.8rem; }
-        .hero-img { max-width: 160px; }
-        .hero-row { gap: 1rem; }
-        .hero-desc { font-size: 1rem; }
-    .hero-title { word-spacing: 0.25rem; }
-}
-
-/* If viewport becomes extremely narrow, allow stacking to avoid overflow */
-@media (max-width: 420px) {
-    .hero-row { flex-wrap: wrap; }
+@media (max-width: 991.98px) {
+    /* stack hero on tablets/phones */
+    .hero-row { flex-wrap: wrap !important; gap: 1.25rem; }
     .hero-image-wrap, .hero-text-wrap { max-width: 100%; flex: 0 0 100%; }
     .hero-image-wrap::after { display: none; }
-    .hero-text-wrap { padding-left: 0; margin-top: 0.75rem; }
-    .hero-title { word-spacing: 0.18rem; }
+    .hero-text-wrap { padding-left: 0; margin-top: 0.5rem; align-items: center; }
+    .hero-desc { font-size: 1rem; text-align: center; }
+    .hero-title { word-spacing: 0.25rem; text-align: center; }
+    .hero-socials { flex-wrap: wrap; gap: 10px; }
+}
+
+@media (max-width: 576px) {
+    .hero-img { max-width: 180px; }
+    section { padding-top: 2rem; padding-bottom: 2rem; }
+}
+
+@media (max-width: 500px) {
+    .container, main.container { padding-left: 1rem; padding-right: 1rem; }
+    .hero-title { font-size: 1.8rem; line-height: 1.2; }
+    .hero-desc { font-size: 0.98rem; }
+    .hero-socials .social-link { width: 40px; height: 40px; }
+    .project-card-image { height: 160px; }
+    .about-photo-scatter { max-width: 260px; }
+    .btn-lg { padding: 0.65rem 1rem; font-size: 1rem; }
+    .navbar-custom { padding: 0.75rem 1rem; }
+}
+
+/* iPhone 8/SE2 and similar */
+@media (max-width: 414px) {
+    .hero-img { max-width: 150px; }
+    .about-photo-scatter { max-width: 240px; }
+}
+
+/* iPhone 8/SE1 width and below */
+@media (max-width: 375px) {
+    .hero-img { max-width: 135px; }
+    .about-photo-scatter { max-width: 220px; }
 }
 
 /* Custom navbar glass style */
@@ -301,6 +315,13 @@ section {
 .navbar-custom .navbar-brand{ color: #fff; }
 .navbar-custom .nav-link{ color: rgba(230,230,230,0.95); }
 .navbar-custom .nav-link.active, .navbar-custom .nav-link:hover{ color: #fff; }
+
+.navbar-custom .navbar-toggler {
+    border-color: rgba(255,255,255,0.15);
+}
+.navbar-custom .navbar-toggler-icon {
+    filter: invert(1);
+}
 
 .navbar-custom .btn-outline-light{ border-color: rgba(255,255,255,0.12); color: #e6e6e6; }
 
