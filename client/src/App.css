@@ -227,6 +227,11 @@ section {
     color: #ffffff;
 }
 
+@keyframes social-pop {
+    0% { transform: translateY(6px) scale(0.95); opacity: 0; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
 /* Scattered photo pieces for About section */
 .about-photo-scatter {
     position: relative;
@@ -286,7 +291,46 @@ section {
     .container, main.container { padding-left: 1rem; padding-right: 1rem; }
     .hero-title { font-size: 1.8rem; line-height: 1.2; }
     .hero-desc { font-size: 0.98rem; }
-    .hero-socials .social-link { width: 40px; height: 40px; }
+    .hero-actions { flex-direction: row !important; }
+    .hero-actions .btn { flex: 1 1 auto; min-width: 0; }
+    .hero-socials { justify-content: center; gap: 10px; flex-wrap: nowrap; }
+    .hero-socials .social-link {
+        width: 36px;
+        height: 36px;
+        animation: social-pop 420ms ease both;
+    }
+    .hero-socials .social-link:nth-child(1) { animation-delay: 60ms; }
+    .hero-socials .social-link:nth-child(2) { animation-delay: 120ms; }
+    .hero-socials .social-link:nth-child(3) { animation-delay: 180ms; }
+    .hero-socials .social-link:nth-child(4) { animation-delay: 240ms; }
+    .hero-socials .social-link:nth-child(5) { animation-delay: 300ms; }
+    .hero-socials .social-link:nth-child(6) { animation-delay: 360ms; }
+    .hero-socials .social-link:nth-child(7) { animation-delay: 420ms; }
+    .hero-socials .social-link:nth-child(8) { animation-delay: 480ms; }
+
+    .hero-section { margin-bottom: 1rem !important; }
+
+    /* projects slider on small screens */
+    #projects-list {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        gap: 12px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 0.75rem;
+    }
+    #projects-list > .col {
+        flex: 0 0 85%;
+        max-width: 85%;
+        scroll-snap-align: center;
+    }
+    .project-reveal { opacity: 1; transform: translateX(0); }
+    .project-reveal .card { animation: slide-in 420ms ease both; }
+    @keyframes slide-in {
+        from { transform: translateX(16px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+
     .project-card-image { height: 160px; }
     .about-photo-scatter { max-width: 260px; }
     .btn-lg { padding: 0.65rem 1rem; font-size: 1rem; }

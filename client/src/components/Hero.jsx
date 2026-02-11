@@ -50,7 +50,7 @@ const Hero = () => {
     }, [])
 
     return (
-        <section className="px-4 py-5 my-5 fluctuate reveal-on-scroll">
+        <section className="px-4 py-5 my-5 fluctuate reveal-on-scroll hero-section">
             <div className="container">
                 <div className="row align-items-center hero-row g-5">
                     <div className="col-5 text-center hero-image-wrap">
@@ -73,7 +73,7 @@ const Hero = () => {
                         <p ref={descRef} className="hero-desc mb-4 reveal-on-scroll">
                             Full-Stack Developer specializing in the MERN Stack and Next.js. I craft high-performance, responsive web applications, ensuring a clean UI and production-ready code from day one.
                         </p>
-                        <div className="d-flex flex-column flex-sm-row gap-2 justify-content-center">
+                        <div className="d-flex flex-column flex-sm-row gap-2 justify-content-center hero-actions">
                             <a href="/resume" className="btn btn-ghost btn-lg px-4" >
                                 View Resume
                             </a>
