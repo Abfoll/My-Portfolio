@@ -289,7 +289,7 @@ section {
 
 @media (max-width: 500px) {
     .container, main.container { padding-left: 1rem; padding-right: 1rem; }
-    .hero-title { font-size: 1.8rem; line-height: 1.2; }
+    .hero-title { font-size: 1.6rem; line-height: 1.2; }
     .hero-desc { font-size: 0.98rem; }
     .hero-actions { flex-direction: row !important; }
     .hero-actions .btn { flex: 1 1 auto; min-width: 0; }
